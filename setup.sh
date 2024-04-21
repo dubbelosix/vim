@@ -4,6 +4,8 @@ install_packages() {
     if [[ "$OSTYPE" == "linux-gnu"* ]]; then
         echo "Linux..."
         sudo apt install -y vim curl
+        curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+        sudo apt-get install -y nodejs
         sudo apt install -y universal-ctags
     elif [[ "$OSTYPE" == "darwin"* ]]; then
         echo "Mac..."
@@ -29,6 +31,6 @@ curl -o ~/.vimrc https://raw.githubusercontent.com/dubbelosix/vim/main/.vimrc
 vim +PlugInstall +qall
 
 # install coc-clangd
-vim +'CocInstall -sync coc-clangd|q'
+vim +'CocInstall -sync coc-clangd' +qall
 
 echo "Done."
