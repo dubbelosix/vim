@@ -1,17 +1,34 @@
 #!/bin/bash
 
-# Install Vim (assuming Debian/Ubuntu, modify as needed for other distros)
-sudo apt update && sudo apt install -y vim
+install_packages() {
+    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        echo "Linux..."
+        sudo apt install -y vim curl
+        sudo apt install -y universal-ctags
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        echo "Mac..."
+        brew install vim curl
+        brew install --HEAD universal-ctags
+    else
+        echo "Unsupported!"
+        exit 1
+    fi
+}
 
-# Install vim-plug
+# install vim + deps
+install_packages
+
+# install vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-# Copy your Vim configuration file
-# For this step, ensure your .vimrc file is accessible, perhaps in a Git repository or downloadable via URL
+# copy vimrc
 curl -o ~/.vimrc https://raw.githubusercontent.com/dubbelosix/vim/main/.vimrc
 
-# Install plugins via vim-plug
+# install all plugins
 vim +PlugInstall +qall
 
-echo "Vim and plugins installed successfully."
+# install coc-clangd
+vim +'CocInstall -sync coc-clangd|q'
+
+echo "Done."
