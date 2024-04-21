@@ -9,7 +9,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 # Copy your Vim configuration file
 # For this step, ensure your .vimrc file is accessible, perhaps in a Git repository or downloadable via URL
-curl -o ~/.vimrc https://raw.githubusercontent.com/dubbelosix/vim/master/.vimrc
+curl -o ~/.vimrc https://raw.githubusercontent.com/dubbelosix/vim/main/.vimrc
 
 # Install plugins via vim-plug
 vim +PlugInstall +qall
