@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -e
+set -x
+
 install_packages() {
     if [[ "$OSTYPE" == "linux-gnu"* ]]; then
         echo "Linux..."
