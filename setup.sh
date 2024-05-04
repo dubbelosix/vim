@@ -7,7 +7,7 @@ install_packages() {
     if [[ "$OSTYPE" == "linux-gnu"* ]]; then
         echo "Linux..."
         curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-        sudo apt-get install -y vim nodejs universal-ctags
+        sudo apt-get install -y vim clangd nodejs universal-ctags
     elif [[ "$OSTYPE" == "darwin"* ]]; then
         echo "Mac..."
         brew install vim curl
